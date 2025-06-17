@@ -1,4 +1,4 @@
-/* Reset margin and padding */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,54 +7,94 @@
 
 body, html {
   height: 100%;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #2b004f; /* dark purple base */
+  overflow: hidden; /* prevent scroll */
 }
 
+/* Starfield background */
 .hero {
+  position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: black; /* fallback color */
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Carina_Nebula.jpg/1920px-Carina_Nebula.jpg');
-  background-size: cover;
-  background-position: center;
+  background: radial-gradient(ellipse at bottom, #1b0039 0%, #2b004f 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: #ff66cc; /* pink text */
   text-align: center;
-  color: white;
   padding: 20px;
+  overflow: hidden;
+}
+
+/* Stars using :before pseudo element */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent url('https://i.imgur.com/rp4CVYT.png') repeat; 
+  /* This is a transparent PNG of small stars — you can replace with your own star pattern */
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Planets - You can add some circles */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 20%;
+  right: 15%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 40% 40%, #ff6699, #cc0066);
+  border-radius: 50%;
+  box-shadow:
+    0 0 20px 10px rgba(255, 102, 153, 0.7),
+    inset 0 0 30px 10px rgba(255, 153, 204, 0.8);
+  z-index: 0;
+  pointer-events: none;
+  animation: planet-spin 30s linear infinite;
+}
+
+/* Simple planet rotation animation */
+@keyframes planet-spin {
+  from { transform: rotate(0deg);}
+  to { transform: rotate(360deg);}
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1; /* above background layers */
 }
 
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  text-shadow: 0 0 10px #ff66cc;
 }
 
 .hero-text p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  text-shadow: 0 0 6px #ff66cc;
 }
 
 button#loadEvents {
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  border: none;
+  border: 2px solid #ff66cc;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.85);
-  color: #000;
+  background-color: transparent;
+  color: #ff66cc;
   cursor: pointer;
-  box-shadow: 0 0 8px rgba(255,255,255,0.7);
+  box-shadow: 0 0 8px #ff66cc;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button#loadEvents:hover {
-  background-color: #222;
-  color: #fff;
+  background-color: #ff66cc;
+  color: #2b004f;
 }
-
-  
-
 
