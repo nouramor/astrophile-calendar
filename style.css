@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://images.unsplash.com/photo-1604079622283-6920899f0dbf') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+}
+
+main {
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.4);
+  min-height: 60vh;
+}
+
+footer {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+}
