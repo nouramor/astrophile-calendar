@@ -8,66 +8,20 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #2b004f; /* dark purple base */
-  overflow: hidden; /* prevent scroll */
+  background-color: #2b004f; /* dark purple */
+  overflow: hidden;
+  color: #ff66cc; /* pink text */
 }
 
-/* Starfield background */
 .hero {
-  position: relative;
   height: 100vh;
   width: 100vw;
-  background: radial-gradient(ellipse at bottom, #1b0039 0%, #2b004f 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  color: #ff66cc; /* pink text */
   text-align: center;
   padding: 20px;
-  overflow: hidden;
-}
-
-/* Stars using :before pseudo element */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-  opacity: 0.5;
-  z-index: 0;
-  pointer-events: none;
-}
-
-}
-
-/* Planets - You can add some circles */
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 20%;
-  right: 15%;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle at 40% 40%, #ff6699, #cc0066);
-  border-radius: 50%;
-  box-shadow:
-    0 0 20px 10px rgba(255, 102, 153, 0.7),
-    inset 0 0 30px 10px rgba(255, 153, 204, 0.8);
-  z-index: 0;
-  pointer-events: none;
-  animation: planet-spin 30s linear infinite;
-}
-
-/* Simple planet rotation animation */
-@keyframes planet-spin {
-  from { transform: rotate(0deg);}
-  to { transform: rotate(360deg);}
-}
-
-.hero-text {
-  position: relative;
-  z-index: 1; /* above background layers */
 }
 
 .hero-text h1 {
@@ -98,4 +52,5 @@ button#loadEvents:hover {
   background-color: #ff66cc;
   color: #2b004f;
 }
+
 
