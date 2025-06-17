@@ -1,0 +1,128 @@
+astrophile-calendar/
+├─ assets/space_bg.jpg
+├─ fonts/Orbitron-Regular.ttf
+├─ lib/main.dart
+└─ pubspec.yaml
+import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void main() {
+  runApp(const AstroApp());
+}
+
+class AstroApp extends StatelessWidget {
+  const AstroApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Astrophile Calendar',
+      theme: ThemeData.dark().copyWith(
+        textTheme: const TextTheme(
+          headlineMedium: TextStyle(fontFamily: 'Orbitron'),
+          bodyLarge: TextStyle(fontFamily: 'Orbitron'),
+        ),
+      ),
+      home: const AstroHomePage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class AstroHomePage extends StatefulWidget {
+  const AstroHomePage({super.key});
+
+  @override
+  State<AstroHomePage> createState() => _AstroHomePageState();
+}
+
+class _AstroHomePageState extends State<AstroHomePage> {
+  List<dynamic> events = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchAstronomyEvents();
+  }
+
+  Future<void> _fetchAstronomyEvents() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      double lat = position.latitude;
+      double lon = position.longitude;
+
+      String appId = 'YOUR_APP_ID'; // Replace with your AstronomyAPI app ID
+      String appSecret = 'YOUR_APP_SECRET'; // Replace with your AstronomyAPI app Secret
+
+      final response = await http.get(
+        Uri.parse('https://api.astronomyapi.com/api/v2/bodies/positions/moon?latitude=$lat&longitude=$lon'),
+        headers: {
+          'Authorization': 'Basic ${base64Encode(utf8.encode('$appId:$appSecret'))}',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        setState(() {
+          events = [jsonDecode(response.body)];
+          isLoading = false;
+        });
+      } else {
+        throw Exception('Failed to load events');
+      }
+    } catch (e) {
+      print("Error fetching events: $e");
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/space_bg.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        padding: const EdgeInsets.all(16.0),
+        child: isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 40),
+                  const Text(
+                    "🌠 Astrophile Calendar",
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 20),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: events.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          color: Colors.black.withOpacity(0.6),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              jsonEncode(events[index]),
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+      ),
+    );
+  }
+}
