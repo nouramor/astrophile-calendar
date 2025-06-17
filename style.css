@@ -1,24 +1,141 @@
-body {
+/* General Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Body */
+body.home {
   font-family: 'Segoe UI', sans-serif;
-  background: url('https://images.unsplash.com/photo-1604079622283-6920899f0dbf') no-repeat center center fixed;
-  background-size: cover;
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  top: 40%;
+  transform: translateY(-40%);
+  padding: 20px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* Button */
+.cta-button {
+  padding: 12px 28px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Events Section */
+.events-section {
+  padding: 40px 20px;
+  background-color: black;
   color: white;
   text-align: center;
 }
 
-header {
-  background: rgba(0, 0, 0, 0.6);
+.events-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Individual Event Cards */
+.event {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+  border-radius: 12px;
   padding: 20px;
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: left;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-main {
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.4);
-  min-height: 60vh;
+.event:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-footer {
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.6);
+.event img {
+  width: 50px;
+  height: 50px;
+  float: right;
+  margin-left: 10px;
+  margin-top: -10px;
+}
+
+.event h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.event p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .event {
+    padding: 15px;
+  }
 }
