@@ -22,6 +22,27 @@ body, html {
   justify-content: center;
   text-align: center;
   padding: 20px;
+  position: relative;
+  background-color: #2b004f;
+  overflow: hidden;
+}
+
+/* Add sparkly stars as a background */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://i.imgur.com/2J3C9yO.png') repeat;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
 }
 
 .hero-text h1 {
