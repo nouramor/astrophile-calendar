@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Perseid Meteor Shower",
+    "date": "2025-08-12",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/929/929407.png",
+    "description": "A major meteor shower in August."
+  },
+  {
+    "name": "Total Lunar Eclipse",
+    "date": "2025-09-27",
+    "location": "Europe, Africa",
+    "lat": 48.8566,
+    "lng": 2.3522,
+    "image": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "description": "Moon turns red under Earth's shadow."
+  }
+]
