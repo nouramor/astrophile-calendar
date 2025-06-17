@@ -1,4 +1,4 @@
-const EVENTS_API_URL = "events.json"; // Make sure events.json is in the same folder
+const EVENTS_API_URL = "https://raw.githubusercontent.com/nouramor/astrophile-calendar/main/events.json"; // Make sure events.json is in the same folder
 const eventsSection = document.getElementById("eventsSection");
 const loadButton = document.getElementById("loadEvents");
 
