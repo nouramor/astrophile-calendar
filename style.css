@@ -1,42 +1,35 @@
-/* Reset */
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+body, html {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #2b004f;
-  color: #ff66cc;
-  overflow: hidden;
 }
 
+/* Hero section */
 .hero {
-  position: relative;
   height: 100vh;
-  width: 100vw;
+  background-image: url('images/carina-nebula.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 20px;
-  background-color: #2b004f;
-  overflow: hidden;
+  color: #e0b3ff;
 }
 
-/* Sparkles using a valid stars image */
-.hero::before {
+.hero::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('https://raw.githubusercontent.com/nour-almar/stars-assets/main/stars-bg.png');
-  background-repeat: repeat;
-  opacity: 0.3;
+  background: rgba(20, 0, 30, 0.6); /* dark overlay */
   z-index: 0;
-  pointer-events: none;
 }
 
 .hero-text {
@@ -47,29 +40,29 @@ html, body {
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 10px #ff66cc;
+  color: #e0b3ff;
+  text-shadow: 0 0 10px #cc66ff;
 }
 
 .hero-text p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  text-shadow: 0 0 6px #ff66cc;
+  color: #f2ccff;
+  text-shadow: 0 0 8px #cc66ff;
 }
 
 button#loadEvents {
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  border: 2px solid #ff66cc;
+  border: none;
   border-radius: 8px;
-  background-color: transparent;
-  color: #ff66cc;
+  background-color: #cc66ff;
+  color: #fff;
   cursor: pointer;
-  box-shadow: 0 0 8px #ff66cc;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 0 10px #cc66ff;
+  transition: background-color 0.3s ease;
 }
 
 button#loadEvents:hover {
-  background-color: #ff66cc;
-  color: #2b004f;
+  background-color: #b300cc;
 }
-
