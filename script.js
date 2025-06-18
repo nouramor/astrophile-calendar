@@ -1,4 +1,4 @@
-const EVENTS_API_URL = "https://raw.githubusercontent.com/nouramor/astrophile-calendar/main/events.json"; // Make sure events.json is in the same folder
+const EVENTS_API_URL = "https://raw.githubusercontent.com/nouramor/astrophile-calendar/main/events.json";
 const eventsSection = document.getElementById("eventsSection");
 const loadButton = document.getElementById("loadEvents");
 
@@ -7,29 +7,52 @@ loadButton.addEventListener("click", async () => {
   eventsSection.innerHTML = "<p>Loading events near you...</p>";
 
   try {
+    // Load your static events first
     const response = await fetch(EVENTS_API_URL);
     const events = await response.json();
 
     if (!navigator.geolocation) {
-      // If geolocation is not supported
       displayEvents(events);
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      async (position) => {
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
 
+        // Filter nearby static events (within 500 km)
         const nearby = events.filter((event) => {
-          // If event has no location, show it anyway
           if (!event.lat || !event.lng) return true;
-
           const distance = getDistance(userLat, userLng, event.lat, event.lng);
-          return distance <= 500; // in km
+          return distance <= 500; // km
         });
 
-        displayEvents(nearby);
+        // Fetch real-time ISS pass data from Open Notify
+        try {
+          const issResponse = await fetch(`http://api.open-notify.org/iss-pass.json?lat=${userLat}&lon=${userLng}`);
+          if (!issResponse.ok) throw new Error("ISS API error");
+
+          const issData = await issResponse.json();
+          if (issData.message === "success") {
+            // Map ISS passes to event objects
+            const issEvents = issData.response.map((pass, i) => ({
+              name: `ISS Pass #${i + 1}`,
+              image: "https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg",
+              date: new Date(pass.risetime * 1000).toISOString(),
+              location: `Lat: ${userLat.toFixed(2)}, Lon: ${userLng.toFixed(2)}`,
+              description: `Duration: ${pass.duration} seconds`
+            }));
+
+            // Combine static nearby + ISS events
+            displayEvents([...nearby, ...issEvents]);
+          } else {
+            displayEvents(nearby);
+          }
+        } catch (err) {
+          console.error("ISS API fetch failed", err);
+          displayEvents(nearby);
+        }
       },
       (error) => {
         console.warn("Geolocation failed, showing all events.", error);
@@ -56,11 +79,13 @@ function displayEvents(events) {
     card.className = "event";
 
     card.innerHTML = `
-      <h2>${event.name}</h2>
       <img src="${event.image}" alt="Event Icon">
-      <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
-      <p><strong>Location:</strong> ${event.location}</p>
-      <p>${event.description}</p>
+      <div>
+        <h2>${event.name}</h2>
+        <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
+        <p><strong>Location:</strong> ${event.location}</p>
+        <p>${event.description}</p>
+      </div>
     `;
 
     eventsSection.appendChild(card);
