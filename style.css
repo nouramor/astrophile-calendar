@@ -20,7 +20,7 @@ body, html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #d8b4ff; /* light purple text */
+  color: black; /* changed from light purple to black */
   text-align: center;
   padding: 20px;
   background-color: #140021;
@@ -33,35 +33,34 @@ body, html {
   background: rgba(20, 0, 33, 0.6); /* semi-transparent dark bg for readability */
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 0 20px #d8b4ff;
+  box-shadow: 0 0 20px black; /* changed from purple to black */
 }
 
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 10px #d8b4ff;
+  text-shadow: 0 0 10px black; /* changed from purple to black */
 }
 
 .hero-text p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  text-shadow: 0 0 6px #d8b4ff;
+  text-shadow: 0 0 6px black; /* changed from purple to black */
 }
 
 button#loadEvents {
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  border: 2px solid #d8b4ff;
+  border: 2px solid black; /* changed from purple to black */
   border-radius: 8px;
   background-color: transparent;
-  color: #d8b4ff;
+  color: black; /* changed from purple to black */
   cursor: pointer;
-  box-shadow: 0 0 8px #d8b4ff;
+  box-shadow: 0 0 8px black; /* changed from purple to black */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button#loadEvents:hover {
-  background-color: #d8b4ff;
+  background-color: black; /* changed from purple to black */
   color: #140021;
 }
-
