@@ -1,4 +1,4 @@
-/* Reset styles */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -9,65 +9,59 @@ body, html {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Hero section with dark purple and background image */
 .hero {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background: url('https://raw.githubusercontent.com/nouramor/astrophile-calendar/main/images/carina-nebula.jpg') no-repeat center center;
-  background: url('images/carina-nebula.jpg') center/cover no-repeat;
-  background-size: cover;
+  background: url('https://raw.githubusercontent.com/nouramor/astrophile-calendar/main/images/carina-nebula.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #dcb3ff; /* light purple text */
+  color: #d8b4ff; /* light purple text */
   text-align: center;
   padding: 20px;
-  overflow: hidden;
+  background-color: #140021;
 }
 
-
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(20, 0, 30, 0.6); /* dark overlay */
-  z-index: 0;
-}
-
+/* Text container above background */
 .hero-text {
   position: relative;
   z-index: 1;
+  background: rgba(20, 0, 33, 0.6); /* semi-transparent dark bg for readability */
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #d8b4ff;
 }
 
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #e0b3ff;
-  text-shadow: 0 0 10px #cc66ff;
+  text-shadow: 0 0 10px #d8b4ff;
 }
 
 .hero-text p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  color: #f2ccff;
-  text-shadow: 0 0 8px #cc66ff;
+  text-shadow: 0 0 6px #d8b4ff;
 }
 
 button#loadEvents {
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  border: none;
+  border: 2px solid #d8b4ff;
   border-radius: 8px;
-  background-color: #cc66ff;
-  color: #fff;
+  background-color: transparent;
+  color: #d8b4ff;
   cursor: pointer;
-  box-shadow: 0 0 10px #cc66ff;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 0 8px #d8b4ff;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button#loadEvents:hover {
-  background-color: #b300cc;
+  background-color: #d8b4ff;
+  color: #140021;
 }
+
