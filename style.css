@@ -20,7 +20,7 @@ body, html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: black; /* changed from light purple to black */
+  color: black; /* changed text color to black */
   text-align: center;
   padding: 20px;
   background-color: #140021;
@@ -33,34 +33,76 @@ body, html {
   background: rgba(20, 0, 33, 0.6); /* semi-transparent dark bg for readability */
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 0 20px black; /* changed from purple to black */
+  box-shadow: 0 0 20px #d8b4ff;
+  max-width: 600px;
+  width: 90%;
 }
 
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 10px black; /* changed from purple to black */
+  text-shadow: 0 0 10px #d8b4ff;
+  color: black;
 }
 
 .hero-text p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  text-shadow: 0 0 6px black; /* changed from purple to black */
+  text-shadow: 0 0 6px #d8b4ff;
+  color: black;
 }
 
 button#loadEvents {
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  border: 2px solid black; /* changed from purple to black */
+  border: 2px solid #d8b4ff;
   border-radius: 8px;
   background-color: transparent;
-  color: black; /* changed from purple to black */
+  color: #d8b4ff;
   cursor: pointer;
-  box-shadow: 0 0 8px black; /* changed from purple to black */
+  box-shadow: 0 0 8px #d8b4ff;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button#loadEvents:hover {
-  background-color: black; /* changed from purple to black */
+  background-color: #d8b4ff;
   color: #140021;
+}
+
+/* Events container */
+#eventsSection {
+  margin-top: 1.5rem;
+  color: black;
+  text-align: left;
+}
+
+/* Individual event card */
+.event {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(216, 180, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.event img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.event h2 {
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  color: #4b0082;
+}
+
+.event p {
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  color: #333;
 }
