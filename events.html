@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Astronomy Events</title>
+  <style>
+    body {
+      background-color: #3a006f; /* dark purple */
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .event {
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .event img {
+      width: 80px;
+      height: 80px;
+      margin-right: 15px;
+    }
+    .event div {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upcoming Astronomy Events</h1>
+  <div id="eventsSection">Loading events...</div>
+
+  <script>
+    const EVENTS_API_URL = "https://raw.githubusercontent.com/nouramor/astrophile-calendar/main/events.json";
+    const eventsSection = document.getElementById("eventsSection");
+
+    async function loadEvents() {
+      try {
+        const response = await fetch(EVENTS_API_URL);
+        const events = await response.json();
+
+        if (!events.length) {
+          eventsSection.innerHTML = "<p>No upcoming events.</p>";
+          return;
+        }
+
+        eventsSection.innerHTML = "";
+
+        events.forEach(event => {
+          const card = document.createElement("div");
+          card.className = "event";
+
+          card.innerHTML = `
+            <img src="${event.image}" alt="Event icon" />
+            <div>
+              <h2>${event.name}</h2>
+              <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
+              <p><strong>Location:</strong> ${event.location}</p>
+              <p>${event.description}</p>
+            </div>
+          `;
+
+          eventsSection.appendChild(card);
+        });
+      } catch (error) {
+        eventsSection.innerHTML = "<p>Failed to load events.</p>";
+        console.error(error);
+      }
+    }
+
+    loadEvents();
+  </script>
+</body>
+</html>
