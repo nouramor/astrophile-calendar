@@ -2,25 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Astrophile Calendar</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000; /* black background */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #3a006f; /* dark purple */
+      border: none;
+      padding: 15px 30px;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #5a1fae;
+    }
+  </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="hero-text">
-      <h1>Astrophile Calendar</h1>
-      <p>Your daily astronomical events planner</p>
-      <button id="loadEvents">Calls from the Universe</button>
-      <div id="eventsSection"></div>
-    </div>
-  </div>
+  <h1>Welcome to Astrophile Calendar</h1>
+  <button id="goToEvents">Show Astronomy Events</button>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('goToEvents').addEventListener('click', () => {
+      window.location.href = 'events.html';
+    });
+  </script>
 </body>
 </html>
-
-
 
 
 
