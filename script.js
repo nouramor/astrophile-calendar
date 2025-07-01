@@ -2,12 +2,10 @@ const EVENTS_API_URL = "https://raw.githubusercontent.com/nouramor/astrophile-ca
 const eventsSection = document.getElementById("eventsSection");
 const loadButton = document.getElementById("loadEvents");
 
-// Load events when button is clicked
 loadButton.addEventListener("click", async () => {
   eventsSection.innerHTML = "<p>Loading events near you...</p>";
 
   try {
-    // Load your static events first
     const response = await fetch(EVENTS_API_URL);
     const events = await response.json();
 
@@ -21,21 +19,20 @@ loadButton.addEventListener("click", async () => {
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
 
-        // Filter nearby static events (within 500 km)
+        // Filter events within 500 km or with lat/lng == 0 (global)
         const nearby = events.filter((event) => {
-          if (!event.lat || !event.lng) return true;
+          if (!event.lat || !event.lng || (event.lat === 0 && event.lng === 0)) return true;
           const distance = getDistance(userLat, userLng, event.lat, event.lng);
-          return distance <= 500; // km
+          return distance <= 500;
         });
 
-        // Fetch real-time ISS pass data from Open Notify
+        // Fetch ISS passes for user location
         try {
           const issResponse = await fetch(`http://api.open-notify.org/iss-pass.json?lat=${userLat}&lon=${userLng}`);
           if (!issResponse.ok) throw new Error("ISS API error");
 
           const issData = await issResponse.json();
           if (issData.message === "success") {
-            // Map ISS passes to event objects
             const issEvents = issData.response.map((pass, i) => ({
               name: `ISS Pass #${i + 1}`,
               image: "https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg",
@@ -44,7 +41,6 @@ loadButton.addEventListener("click", async () => {
               description: `Duration: ${pass.duration} seconds`
             }));
 
-            // Combine static nearby + ISS events
             displayEvents([...nearby, ...issEvents]);
           } else {
             displayEvents(nearby);
@@ -65,7 +61,6 @@ loadButton.addEventListener("click", async () => {
   }
 });
 
-// Display events on the page
 function displayEvents(events) {
   if (events.length === 0) {
     eventsSection.innerHTML = "<p>No astronomical events nearby.</p>";
@@ -79,7 +74,7 @@ function displayEvents(events) {
     card.className = "event";
 
     card.innerHTML = `
-      <img src="${event.image}" alt="Event Icon">
+      <img src="${event.image}" alt="Event Icon" style="width: 100px; height: 100px;">
       <div>
         <h2>${event.name}</h2>
         <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
@@ -92,9 +87,8 @@ function displayEvents(events) {
   });
 }
 
-// Haversine formula to calculate distance between two lat/lng points
 function getDistance(lat1, lon1, lat2, lon2) {
-  const R = 6371; // Radius of the Earth in km
+  const R = 6371; // Earth's radius in km
   const dLat = deg2rad(lat2 - lat1);
   const dLon = deg2rad(lon2 - lon1);
   const a =
