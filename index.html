@@ -4,37 +4,43 @@
   <meta charset="UTF-8" />
   <title>Astrophile Calendar</title>
   <style>
-    body {
+    html, body {
+      margin: 0; padding: 0; height: 100%;
       font-family: Arial, sans-serif;
-      background: #000; /* black background */
+      overflow: hidden;
+    }
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/7/79/Carina_Nebula_-_NGC_3372_-_Hubble_2010.jpg') no-repeat center center/cover;
       color: white;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      flex-direction: column;
+      text-shadow: 0 0 10px black;
     }
     h1 {
-      margin-bottom: 20px;
+      font-size: 3em;
+      margin-bottom: 30px;
     }
     button {
-      background-color: #3a006f; /* dark purple */
+      background-color: rgba(58, 0, 111, 0.8); /* dark purple with transparency */
       border: none;
-      padding: 15px 30px;
+      padding: 15px 40px;
       color: white;
-      font-size: 18px;
-      border-radius: 8px;
+      font-size: 20px;
+      border-radius: 10px;
       cursor: pointer;
+      box-shadow: 0 0 15px #5a1fae;
       transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #5a1fae;
+      background-color: rgba(90, 31, 174, 0.9);
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Astrophile Calendar</h1>
+  <h1>Astrophile Calendar</h1>
   <button id="goToEvents">Show Astronomy Events</button>
 
   <script>
@@ -45,10 +51,7 @@
 </body>
 </html>
 
-
-
-
-
+  
 
 
 
