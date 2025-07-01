@@ -4,55 +4,87 @@
   <meta charset="UTF-8" />
   <title>Astrophile Calendar</title>
   <style>
-    html, body {
-      margin: 0; padding: 0; height: 100%;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
+    /* Your CSS from above */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    body {
-      background: url('carina-nebula.jpg') no-repeat center center/cover;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .hero {
+      position: relative;
       height: 100vh;
-      text-shadow: 0 0 10px black;
-    }
-    .content-wrapper {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 40px 60px;
-      border-radius: 15px;
+      width: 100vw;
+      background: url('https://raw.githubusercontent.com/nouramor/astrophile-calendar/main/images/carina-nebula.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: black;
       text-align: center;
+      padding: 20px;
+      background-color: #140021;
     }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 30px;
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      background: rgba(20, 0, 33, 0.6);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #d8b4ff;
+      max-width: 600px;
+      width: 90%;
     }
-    button {
-      background-color: rgba(58, 0, 111, 0.8);
-      border: none;
-      padding: 15px 40px;
-      color: white;
-      font-size: 20px;
-      border-radius: 10px;
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px #d8b4ff;
+      color: black;
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 6px #d8b4ff;
+      color: black;
+    }
+
+    button#loadEvents {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: 2px solid #d8b4ff;
+      border-radius: 8px;
+      background-color: transparent;
+      color: #d8b4ff;
       cursor: pointer;
-      box-shadow: 0 0 15px #5a1fae;
-      transition: background-color 0.3s ease;
+      box-shadow: 0 0 8px #d8b4ff;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    button:hover {
-      background-color: rgba(90, 31, 174, 0.9);
+
+    button#loadEvents:hover {
+      background-color: #d8b4ff;
+      color: #140021;
     }
   </style>
 </head>
 <body>
-  <div class="content-wrapper">
-    <h1>Astrophile Calendar</h1>
-    <button id="goToEvents">Show Astronomy Events</button>
-  </div>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Astrophile Calendar</h1>
+      <p>Your daily guide to astronomical events near you</p>
+      <button id="loadEvents">Show Astronomy Events</button>
+    </div>
+  </section>
 
   <script>
-    document.getElementById('goToEvents').addEventListener('click', () => {
+    document.getElementById('loadEvents').addEventListener('click', () => {
       window.location.href = 'events.html';
     });
   </script>
