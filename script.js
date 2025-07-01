@@ -10,6 +10,7 @@ loadButton.addEventListener("click", async () => {
     const events = await response.json();
 
     if (!navigator.geolocation) {
+      events.sort((a, b) => new Date(a.date) - new Date(b.date)); // sort before display
       displayEvents(events);
       return;
     }
@@ -41,17 +42,22 @@ loadButton.addEventListener("click", async () => {
               description: `Duration: ${pass.duration} seconds`
             }));
 
-            displayEvents([...nearby, ...issEvents]);
+            const combinedEvents = [...nearby, ...issEvents];
+            combinedEvents.sort((a, b) => new Date(a.date) - new Date(b.date)); // sort by date
+            displayEvents(combinedEvents);
           } else {
+            nearby.sort((a, b) => new Date(a.date) - new Date(b.date)); // sort by date
             displayEvents(nearby);
           }
         } catch (err) {
           console.error("ISS API fetch failed", err);
+          nearby.sort((a, b) => new Date(a.date) - new Date(b.date)); // sort by date
           displayEvents(nearby);
         }
       },
       (error) => {
         console.warn("Geolocation failed, showing all events.", error);
+        events.sort((a, b) => new Date(a.date) - new Date(b.date)); // sort before display
         displayEvents(events);
       }
     );
