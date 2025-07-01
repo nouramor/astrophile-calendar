@@ -1,20 +1,101 @@
 [
   {
-    "name": "Perseid Meteor Shower",
-    "date": "2025-08-12",
+    "name": "Mercury at Greatest Eastern Elongation",
+    "date": "2025-07-04",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/190/190411.png",
+    "description": "Mercury visible in the evening sky, farthest from the Sun."
+  },
+  {
+    "name": "Full Buck Moon",
+    "date": "2025-07-10",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/535/535188.png",
+    "description": "The Full Moon in July, also known as the Buck Moon."
+  },
+  {
+    "name": "Mars Close Approach",
+    "date": "2025-07-15",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/3023/3023607.png",
+    "description": "Mars reaches its closest point to Earth, great for observation."
+  },
+  {
+    "name": "New Moon",
+    "date": "2025-07-24",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/535/535189.png",
+    "description": "The moon is not visible, ideal for stargazing."
+  },
+  {
+    "name": "Delta Aquariid Meteor Shower Peak",
+    "date": "2025-07-29",
+    "location": "Southern Hemisphere, parts of Northern Hemisphere",
+    "lat": -20,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/929/929407.png",
+    "description": "Moderate meteor shower active in late July."
+  },
+  {
+    "name": "Alpha Capricornid Meteor Shower Peak",
+    "date": "2025-07-31",
     "location": "Worldwide",
     "lat": 0,
     "lng": 0,
     "image": "https://cdn-icons-png.flaticon.com/512/929/929407.png",
-    "description": "A major meteor shower in August."
+    "description": "Meteor shower known for bright fireballs."
   },
   {
-    "name": "Total Lunar Eclipse",
-    "date": "2025-09-27",
-    "location": "Europe, Africa",
-    "lat": 48.8566,
-    "lng": 2.3522,
-    "image": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-    "description": "Moon turns red under Earth's shadow."
+    "name": "Venus Near Aldebaran",
+    "date": "2025-07-13",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/190/190411.png",
+    "description": "Venus passes close to Aldebaran star cluster before sunrise."
+  },
+  {
+    "name": "Saturn Retrograde Begins",
+    "date": "2025-07-14",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/3023/3023607.png",
+    "description": "Saturn appears to move backward in the sky."
+  },
+  {
+    "name": "Mercury Retrograde Begins",
+    "date": "2025-07-17",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/190/190411.png",
+    "description": "Mercury appears to move backward in the sky."
+  },
+  {
+    "name": "Lunar Occultation of the Pleiades",
+    "date": "2025-07-20",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/535/535189.png",
+    "description": "The Moon passes close to the Pleiades star cluster."
+  },
+  {
+    "name": "Pluto at Opposition",
+    "date": "2025-07-25",
+    "location": "Worldwide",
+    "lat": 0,
+    "lng": 0,
+    "image": "https://cdn-icons-png.flaticon.com/512/3023/3023607.png",
+    "description": "Pluto visible all night at its brightest."
   }
 ]
